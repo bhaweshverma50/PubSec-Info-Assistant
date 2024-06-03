@@ -2,7 +2,7 @@
 // Licensed under the MIT license.
 
 import { Outlet, NavLink, Link } from "react-router-dom";
-import openai from "../../assets/new white logo.svg";
+import openai from "../../assets/vollee.png";
 import { WarningBanner } from "../../components/WarningBanner/WarningBanner";
 import styles from "./Layout.module.css";
 import { Title } from "../../components/Title/Title";
