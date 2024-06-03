@@ -53,55 +53,56 @@ export const QuestionInput = ({ onSend, disabled, placeholder, clearOnSend, onAd
 
     const sendQuestionDisabled = disabled || !question.trim();
 
-    const [clearChatTextEnabled, setClearChatTextEnable] = useState<boolean>(true); 
-    
+    const [clearChatTextEnabled, setClearChatTextEnable] = useState<boolean>(true);
+
     const onMouseEnter = () => {
         setClearChatTextEnable(false);
-    }
+    };
 
     const onMouseLeave = () => {
         setClearChatTextEnable(true);
-    }
+    };
 
     return (
         <Stack>
             <Stack.Item>
-            <Stack horizontal className={styles.questionInputContainer}>
-                {showClearChat ? (
-                    <div className={styles.questionClearButtonsContainer}>
+                <Stack horizontal className={styles.questionInputContainer}>
+                    {showClearChat ? (
+                        <div className={styles.questionClearButtonsContainer}>
+                            <div
+                                className={styles.questionClearChatButton}
+                                aria-label="Clear chat button"
+                                onClick={onClearClick}
+                                onMouseEnter={onMouseEnter}
+                                onMouseLeave={onMouseLeave}
+                            >
+                                <Broom28Filled primaryFill="rgba(255, 255, 255, 1)" />
+                                <span id={"test"} hidden={clearChatTextEnabled}>
+                                    Clear Chat
+                                </span>
+                            </div>
+                        </div>
+                    ) : null}
+                    <TextField
+                        className={styles.questionInputTextArea}
+                        placeholder={placeholder}
+                        multiline
+                        resizable={false}
+                        borderless
+                        value={question}
+                        onChange={onQuestionChange}
+                        onKeyDown={onEnterPress}
+                    />
+                    <div className={styles.questionInputButtonsContainer}>
                         <div
-                            className={styles.questionClearChatButton}
-                            aria-label="Clear chat button"
-                            onClick={onClearClick}
-                            onMouseEnter={onMouseEnter}
-                            onMouseLeave={onMouseLeave}
+                            className={`${styles.questionInputSendButton} ${sendQuestionDisabled ? styles.questionInputSendButtonDisabled : ""}`}
+                            aria-label="Ask question button"
+                            onClick={sendQuestion}
                         >
-                            <Broom28Filled primaryFill="rgba(255, 255, 255, 1)" />
-                            <span id={"test"} hidden={clearChatTextEnabled}>Clear Chat</span>
+                            <Send28Filled primaryFill="rgba(115, 118, 225, 1)" />
                         </div>
                     </div>
-                )
-                : null}
-                <TextField
-                    className={styles.questionInputTextArea}
-                    placeholder={placeholder}
-                    multiline
-                    resizable={false}
-                    borderless
-                    value={question}
-                    onChange={onQuestionChange}
-                    onKeyDown={onEnterPress}
-                />
-                <div className={styles.questionInputButtonsContainer}>
-                    <div
-                        className={`${styles.questionInputSendButton} ${sendQuestionDisabled ? styles.questionInputSendButtonDisabled : ""}`}
-                        aria-label="Ask question button"
-                        onClick={sendQuestion}
-                    >
-                        <Send28Filled primaryFill="rgba(115, 118, 225, 1)" />
-                    </div>
-                </div>
-            </Stack>
+                </Stack>
             </Stack.Item>
             <Stack.Item align="center">
                 <RAIPanel onAdjustClick={onAdjustClick} onRegenerateClick={onRegenerateClick} />

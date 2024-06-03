@@ -11,9 +11,9 @@ export type ExampleModel = {
 };
 
 const EXAMPLES: ExampleModel[] = [
-    { text: "Are there any radio telescopes in Australia?", value: "Are there any radio telescopes in Australia?" },
-    { text: "What are Microsoft's primary sources of revenue?", value: "What are Microsoft's primary sources of revenue?" },
-    { text: "What are some flavors of Breyers?", value: "What are some flavors of Breyers?" }
+    { text: "How does HVAC settings impact indoor air quality?", value: "How does HVAC settings impact indoor air quality?" },
+    { text: "What is the sizing and placement guideline for an XC21 unit?", value: "What is the sizing and placement guideline for an XC21 unit?" },
+    { text: "How much more efficient is a 20 SEER vs 14 SEER?", value: "How much more efficient is a 20 SEER vs 14 SEER?" }
 ];
 
 interface Props {
